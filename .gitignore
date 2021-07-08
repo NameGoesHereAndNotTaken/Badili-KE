@@ -1,0 +1,7 @@
+__pycache__/
+.vscode/
+migrations/
+virtual/
+venv/
+node_modules/
+env.sh
