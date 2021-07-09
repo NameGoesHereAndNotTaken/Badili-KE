@@ -17,8 +17,8 @@ def ussd_launch():
         if user:
             print("User is correct")
             print(user)
-            psql.add(user)
-            psql.commit()
+            psql.session.add(user)
+            psql.session.commit()
         else:
             print("User not exists")
             print(user)
