@@ -1,6 +1,6 @@
 from Backend import psql, middleware
 from flask import current_app
-
+from werkzeug.security import generate_password_hash
 class User(psql.Model):
     id = psql.Column(psql.Integer, primary_key=True)
     first_name = psql.Column(psql.String(100), nullable=False)
@@ -25,4 +25,5 @@ class User(psql.Model):
             self.phone_number = phone_number
             self.currencies = current_app.config.get("COUNTRY_CODE") + ","
             self.public_key = stellar_account['public_key']
-            self.pin = stellar_account['secret']
+            self.pin = generate_password_hash(pin)
+            self.secret = stellar_account['secret']
