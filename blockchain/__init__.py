@@ -34,7 +34,7 @@ class Stellar:
             response = e
 
         if response["successful"] != None:
-            secret = self.hash_secret(pin, self.masterkey.secret)
+            secret = self.hash_secret(pin, keypair.secret)
             return {'public_key': keypair.public_key, 'secret': secret}, {'status':'success'}
         else:
             return None, response
