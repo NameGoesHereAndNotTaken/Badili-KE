@@ -42,11 +42,11 @@ class Stellar:
             return None, response
 
     def hash_secret(self, pin, secret):
-        salt = generate_password_hash(pin)
+        salt = str.encode(generate_password_hash(pin))
         kdf = PBKDF2HMAC(
             algorithm=hashes.SHA256(),
             length=32,
-            salt=str.encode(salt),
+            salt=salt,
             iterations=100000,
         )
         key = base64.urlsafe_b64encode(kdf.derive(pin))
