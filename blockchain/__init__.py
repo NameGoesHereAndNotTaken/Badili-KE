@@ -30,6 +30,7 @@ class Stellar:
             response = server.submit_transaction(transaction)
         except Exception as e:
             print(e)
+            print(self.config.get('STELLAR_ADMIN_SECRET_KEY'))
             response = e
 
         if response["successful"] != None:
