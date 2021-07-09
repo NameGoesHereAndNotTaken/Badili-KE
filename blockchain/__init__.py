@@ -10,13 +10,14 @@ from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 class Stellar:
     def __init__(self, config):
         self.config = config
+        self.masterkey = Keypair.from_secret(self.config.get('STELLAR_ADMIN_SECRET_KEY'))
 
     def create_account_on_blockchain(self, pin):
         keypair = Keypair.random()
         server = Server(horizon_url=self.config.get('HORIZON_NETWORK'))
         transaction = (
                 TransactionBuilder(
-                    source_account=server.load_account(self.config.get('STELLAR_ADMIN_PUBLIC_KEY')),
+                    source_account=server.load_account(self.masterkey.public_key),
                     network_passphrase=self.config.get('HORIZON_NETWORK'),
                     base_fee=server.fetch_base_fee()
                 ).append_create_account_op(
@@ -24,13 +25,12 @@ class Stellar:
                     starting_balance="5"
                 ).set_timeout(1000).build()
         )
-        transaction.sign(self.config.get('STELLAR_ADMIN_SECRET_KEY'))
+        transaction.sign(self.masterkey.secret)
         
         try:
             response = server.submit_transaction(transaction)
         except Exception as e:
             print(e)
-            print(self.config.get('STELLAR_ADMIN_SECRET_KEY'))
             response = e
 
         if response["successful"] != None:
