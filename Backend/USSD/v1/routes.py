@@ -14,7 +14,12 @@ def ussd_launch():
         #TODO: Check if user exists 
         user = User("34062211", phone_number, "6341")
         if user:
+            print("User is correct")
             print(user)
+        else:
+            print("User not exists")
+            print(user)
+
         # if not user:
         #     response = "CON Welcome to Badili.co Move money anywhere.\n"
         #     response += "1. Account Registration"
