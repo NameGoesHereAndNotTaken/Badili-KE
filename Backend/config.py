@@ -1,4 +1,5 @@
 import os
+
 class Config():
     SECRET_KEY = "OQ@FVuEtE2033>Kw73SA!dAy#6ey&fppojkK@<f52@mIdQOfIzKBTyQN!eWg6y2uxtM19lGN>5#mzsDEk2BvraxINa41Q+Fc0s!"
     DEBUG = True
@@ -8,6 +9,9 @@ class Config():
     APP_KEY = "v5GO3ZgnpRZcfnlnXGRLfTrPHggmqIfg"
     APP_SECRET = "Tz0wsgFDLvGVLBJh"
     API_ENVIRONMENT = "sandbox"
+    HORIZON_NETWORK = "https://horizon-testnet.stellar.org"
+    STELLAR_ADMIN_PUBLIC_KEY = os.environ.get("STELLAR_PUBLIC_KEY")
+    STELLAR_ADMIN_SECRET_KEY = os.environ.get("STELLAR_PRIVATE_KEY")
 
 class DevConfig(Config):
     SQLALCHEMY_DATABASE_URI =  os.environ.get('DEV_SQLALCHEMY_DATABASE_URI') 
