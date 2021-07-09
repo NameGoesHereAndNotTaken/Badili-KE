@@ -1,6 +1,6 @@
 
 import warnings
-from stellar_sdk import Keypair, Server, TransactionBuilder
+from stellar_sdk import Keypair, Server, TransactionBuilder, Network
 from werkzeug.security import generate_password_hash
 import base64
 from cryptography.fernet import Fernet
@@ -18,7 +18,7 @@ class Stellar:
         transaction = (
                 TransactionBuilder(
                     source_account=server.load_account(self.masterkey.public_key),
-                    network_passphrase=self.config.get('HORIZON_NETWORK'),
+                    network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE,
                     base_fee=server.fetch_base_fee()
                 ).append_create_account_op(
                     destination=keypair.public_key,
