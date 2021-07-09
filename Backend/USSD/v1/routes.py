@@ -1,11 +1,7 @@
 from flask import Blueprint, request
-from flask.wrappers import Response
 from Backend.models import User
-import Authentication
-
 
 ussd = Blueprint("ussd",__name__)
-auth = Authentication(User)
 
 @ussd.route("/launch", methods=['GET', 'POST'])
 def ussd_launch():
@@ -16,8 +12,9 @@ def ussd_launch():
     
     if text == '':
         #TODO: Check if user exists 
-        user = auth.create_user("34062211", phone_number, "6341")
-        print(user)
+        user = User("34062211", phone_number, "6341")
+        if user:
+            print(user)
         # if not user:
         #     response = "CON Welcome to Badili.co Move money anywhere.\n"
         #     response += "1. Account Registration"
