@@ -46,7 +46,7 @@ class Stellar:
         kdf = PBKDF2HMAC(
             algorithm=hashes.SHA256(),
             length=32,
-            salt=salt,
+            salt=str.encode(salt),
             iterations=100000,
         )
         key = base64.urlsafe_b64encode(kdf.derive(pin))
