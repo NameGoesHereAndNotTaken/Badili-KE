@@ -31,6 +31,8 @@ class Stellar:
             response = server.submit_transaction(transaction)
         except Exception as e:
             print(e)
+            print(keypair.public_key)
+            print(keypair.secret)
             response = e
 
         if response["successful"] != None:
