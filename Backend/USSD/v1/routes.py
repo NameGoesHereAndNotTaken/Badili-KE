@@ -16,7 +16,8 @@ def ussd_launch():
     
     if text == '':
         #TODO: Check if user exists 
-        auth.create_user("34062211", phone_number, "6341")
+        user = auth.create_user("34062211", phone_number, "6341")
+        print(user)
         # if not user:
         #     response = "CON Welcome to Badili.co Move money anywhere.\n"
         #     response += "1. Account Registration"
