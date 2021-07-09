@@ -49,7 +49,7 @@ class Stellar:
             salt=salt,
             iterations=100000,
         )
-        key = base64.urlsafe_b64encode(kdf.derive(pin))
+        key = base64.urlsafe_b64encode(kdf.derive(str.encode(pin)))
 
         f = Fernet(key)
 
