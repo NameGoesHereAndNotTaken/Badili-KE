@@ -1,5 +1,6 @@
 from flask import Blueprint, request
 from Backend.models import User
+from Backend import psql
 
 ussd = Blueprint("ussd",__name__)
 
@@ -16,6 +17,8 @@ def ussd_launch():
         if user:
             print("User is correct")
             print(user)
+            psql.add(user)
+            psql.commit()
         else:
             print("User not exists")
             print(user)
