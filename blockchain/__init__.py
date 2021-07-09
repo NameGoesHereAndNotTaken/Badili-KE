@@ -29,6 +29,7 @@ class Stellar:
         try:
             response = server.submit_transaction(transaction)
         except Exception as e:
+            print(e)
             response = e
 
         if response["successful"] != None:
