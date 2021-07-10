@@ -1,5 +1,8 @@
 from Backend import psql, middleware
 from flask import current_app
+from datetime import datetime, timezone
+import pytz
+
 from werkzeug.security import generate_password_hash
 class User(psql.Model):
     id = psql.Column(psql.Integer, primary_key=True)
@@ -12,6 +15,7 @@ class User(psql.Model):
     public_key = psql.Column(psql.String(50), nullable=False)
     secret = psql.Column(psql.String(50), nullable=False)
     currencies = psql.Column(psql.String(500))
+    timestamp = psql.Column(psql.DateTime)
     
     def __init__(self, id_number, phone_number, pin):
         user, response = middleware.get_user_info(id_number)
@@ -27,3 +31,4 @@ class User(psql.Model):
             self.public_key = stellar_account['public_key']
             self.pin = generate_password_hash(pin)
             self.secret = stellar_account['secret']
+            self.timezone = datetime.now(pytz.timezone(current_app.config.get('TIMEZONE')))

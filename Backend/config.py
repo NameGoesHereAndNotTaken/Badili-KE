@@ -12,6 +12,7 @@ class Config():
     HORIZON_NETWORK = "https://horizon-testnet.stellar.org"
     STELLAR_ADMIN_PUBLIC_KEY = os.environ.get("STELLAR_PUBLIC_KEY")
     STELLAR_ADMIN_SECRET_KEY = os.environ.get("STELLAR_SECRET_KEY")
+    TIMEZONE = os.environ.get("LOCAL_TIMEZONE")
 
 class DevConfig(Config):
     SQLALCHEMY_DATABASE_URI =  os.environ.get('DEV_SQLALCHEMY_DATABASE_URI') 
