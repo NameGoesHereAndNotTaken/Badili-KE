@@ -35,4 +35,4 @@ class User(psql.Model):
 
     @classmethod
     def check_user_exists(cls, phone_number):
-        return User.query.filter_(User.phone_number == phone_number).first()
+        return User.query.filter_by(phone_number = phone_number).first()
