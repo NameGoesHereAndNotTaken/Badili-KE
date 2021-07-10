@@ -13,7 +13,7 @@ def ussd_launch():
     
     if text == '':
         #TODO: Check if user exists 
-        user = User("34062211", phone_number, "6341")
+        user = User("00000001", phone_number, "6341")
         if user:
             print("User is correct")
             print(user)
