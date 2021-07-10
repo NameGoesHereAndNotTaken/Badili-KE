@@ -13,6 +13,9 @@ class Config():
     STELLAR_ADMIN_PUBLIC_KEY = os.environ.get("STELLAR_PUBLIC_KEY")
     STELLAR_ADMIN_SECRET_KEY = os.environ.get("STELLAR_SECRET_KEY")
     TIMEZONE = os.environ.get("LOCAL_TIMEZONE")
+    APPRUVE_API_KEY = os.environ.get("APPRUVE_TOKEN")
+    COUNTRY = os.environ.get("COUNTRY")
+    APPRUVE_BASE_URL = os.environ.get("APPRUVE_BASE_URL")
 
 class DevConfig(Config):
     SQLALCHEMY_DATABASE_URI =  os.environ.get('DEV_SQLALCHEMY_DATABASE_URI') 
@@ -21,7 +24,7 @@ class DevConfig(Config):
 
     AFRICASTALKING_USERNAME = "sandbox"
     AFRICASTALKING_API = "59529cb095537a85924844301b1e5508b9dba6c03b9e7ca7092a88cf37a25474"
-    COUNTRY_CODE = "KE"
+    COUNTRY_CODE = os.environ.get("COUNTRY_CODE")
 
 class ProdConfig(Config):
     DEBUG = False
