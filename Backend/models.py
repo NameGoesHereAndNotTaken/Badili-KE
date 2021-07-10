@@ -31,4 +31,8 @@ class User(psql.Model):
             self.public_key = stellar_account['public_key']
             self.pin = generate_password_hash(pin)
             self.secret = stellar_account['secret']
-            self.timezone = datetime.now(pytz.timezone(current_app.config.get('TIMEZONE')))
+            self.timestamp = datetime.now(pytz.timezone(current_app.config.get('TIMEZONE')))
+
+    @classmethod
+    def check_user_exists(cls, phone_number):
+        return User.query.filter(phone_number = phone_number).first()

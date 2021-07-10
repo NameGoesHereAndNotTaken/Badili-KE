@@ -13,23 +13,25 @@ def ussd_launch():
     
     if text == '':
         #TODO: Check if user exists 
-        user = User("00000001", phone_number, "6341")
+        user = User.check_user_exists(phone_number)
         if user:
-            print("User is correct")
-            print(user)
-            psql.session.add(user)
-            psql.session.commit()
+            response = f"CON Welcome back {user.first_name} \n"
+            response += "1. Send Money \n"
+            response += "2. Withdraw Money \n"
+            response += "3. Top up Account \n"
+            text = '2'
         else:
-            print("User not exists")
-            print(user)
-
-        # if not user:
-        #     response = "CON Welcome to Badili.co Move money anywhere.\n"
-        #     response += "1. Account Registration"
-        # else:
-        #     response = f"CON Welcome back {user.first_name} \n"
-        #     response += "1. Send Money \n"
-        #     response += "2. Withdraw Money \n"
-        #     response += "3. Top up Account \n"
+            response = "CON Welcome to Badili. The future of mobile money"
+            response += "1. Register Account"
+        
+    elif text == '1':
+        response = "CON Enter your National ID number"
+        # user = User("00000001", phone_number, "6341")
+        # if user:
+        #     print("User is correct")
+        #     print(user)
+        #     psql.session.add(user)
+        #     psql.session.commit()
+    
     
     return response

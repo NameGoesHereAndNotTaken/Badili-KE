@@ -14,6 +14,8 @@ class Middleware:
             self.config = app.config
         self.stellar = Stellar(self.config)
         self.appruve = Appruve(self.config)
+        print("verification_type is")
+        print(self.appruve.verification_type)
 
     def get_user_info(self, id_number):
         if not id_number:
@@ -21,14 +23,16 @@ class Middleware:
         
         valid_verification_types = self.appruve.get_valid_verification_types()
         print(valid_verification_types)
-        user = self.appruve.verify_national_id(id_number, 1)
+        user = self.appruve.verify_national_id(id_number, "national_id")
+        print("REturned user is")
+        print(user)
         if user:
             user = {
-                "first_name": "GRishon",
-                "last_name":"Gikima",
-                "id_number": id_number,
-                "dob": "dob",
-                "gender": "M"
+                "first_name": user['first_name'],
+                "last_name":user['last_name'],
+                "id_number": user['id'],
+                "dob": user['date_of_birth'],
+                "gender": "gender"
             }
             return user, {'status': 'success'}
         else:
