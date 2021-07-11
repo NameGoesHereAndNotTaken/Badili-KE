@@ -42,14 +42,14 @@ What if now Bob needs some liquid cash, how does he withdraw from his wallet?
 
 For ever country Badili is available, this is how the set up looks.
 
-    1. Badili has integrated with a local mobile money provider that allows Badili users for that country to conviniently liquidate assets and transfer money to Badili.
-    2. Badili receives money deposited by the users and in turn transfers stable coin of the same value to the user.
-    3. For all the currencies the user holds, Badili establishes trustlines between the user's blockchain account and the assset's issuing account.
-    4. For cross currency payements, Badili utilizes path payments made possible by the underlining blockchain.
-    5. Sending money from one account holder to another, Badili fetches the 2 blockchain accounts of the users and facilitates the money transfer, through the established trustlines.
-    6. Users can also send money directly to an accounts blockchain address if they already have the recipient's address. The receipient doesn't have to own a Badili account. 
-    7. Users could also receive funds from other blockchain addresses directly if they share their addresses. (Not made obvious for simplicity's sake.)
-    8. Other applications can send any currency to a Badili account holder by going through Badili's public apis.
+1. Badili has integrated with a local mobile money provider that allows Badili users for that country to conviniently liquidate assets and transfer money to Badili.
+2. Badili receives money deposited by the users and in turn transfers stable coin of the same value to the user.
+3. For all the currencies the user holds, Badili establishes trustlines between the user's blockchain account and the assset's issuing account.
+4. For cross currency payements, Badili utilizes path payments made possible by the underlining blockchain.
+5. Sending money from one account holder to another, Badili fetches the 2 blockchain accounts of the users and facilitates the money transfer, through the established trustlines.
+6. Users can also send money directly to an accounts blockchain address if they already have the recipient's address. The receipient doesn't have to own a Badili account. 
+7. Users could also receive funds from other blockchain addresses directly if they share their addresses. (Not made obvious for simplicity's sake.)
+8. Other applications can send any currency to a Badili account holder by going through Badili's public apis.
     
 ![Image of badili stack](/badili.jpg)
 
