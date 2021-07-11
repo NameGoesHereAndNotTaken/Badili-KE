@@ -3,7 +3,7 @@
 
 Blockchain technology has the ability to solve many problems faced in Africa. The problem is, for the majority, it's such a hussle to get started. There is a huge learning curve understanding all the bells and whistles. This makes it difficult for the adoption of most products widely accepted globally. Badili sets out to make it easy for the average person in Afica to participate in the blockchain revolution. 
 
-    Badili is a USSD based blockchain wallet that makes it simple for anyone on the African continent to send, receive and hold any financial assets from any part of the world, right on their phones. Feature phone or smartphone.
+    ```Badili is a USSD based blockchain wallet that makes it simple for anyone on the African continent to send, receive and hold any financial assets from any part of the world, right on their phones. Feature phone or smartphone.```
     
 :point_up: 1 more thing...
 
