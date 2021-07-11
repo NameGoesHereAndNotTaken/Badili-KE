@@ -21,7 +21,7 @@ def ussd_launch():
             response += "3. Top up Account \n"
             text = '2'
         else:
-            response = "CON Welcome to Badili. The future of mobile money"
+            response = "CON Welcome to Badili. The future of mobile money\n"
             response += "1. Register Account"
         
     elif text == '1':
