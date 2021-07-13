@@ -31,10 +31,13 @@ class Register:
                 response += "2. Withdraw Money \n"
                 response += "3. Top up Account \n"
                 self.response = response
+                print("Empty mwisho")
+                print(self.response)
             else:
                 response = "CON Welcome to Badili. The future of mobile money\n"
                 response += "1. Register Account"
                 self.response = response
+                print("EMpty nada")
         else:
             if not self.user:                
                 response = "CON Enter your National ID number"
