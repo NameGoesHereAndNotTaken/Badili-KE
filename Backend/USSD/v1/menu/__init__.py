@@ -1,9 +1,10 @@
 import re
 from Backend.models import User
 class Register:
-    def __init__(self, menu_items):
+    def __init__(self, menu_items, user_data):
+        self.user_data = user_data
         self.menu_items = menu_items
-        self.user = self.is_user_registered()
+        self.user = self.is_user_registered(self.user_data['phone_number'])
         self.determine_level()
         self.response = None
     

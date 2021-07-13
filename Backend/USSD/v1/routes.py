@@ -12,15 +12,20 @@ def ussd_launch():
     phone_number = request.values.get("phoneNumber", None)
     text = request.values.get("text", "")
     menu_items = get_menu_items(text)
+    user_data = {
+        'session_id':session_id,
+        'service_code':service_code,
+        'phone_number':phone_number,
+    }
 
     if menu_items[0] == '':
-        register  = Register(menu_items)
+        register  = Register(menu_items, user_data)
         response = register.get_response()
 
     elif menu_items[0] == "1":
         user = Register.is_user_registered(phone_number)
         if not user:
-            register  = Register(menu_items)
+            register  = Register(menu_items, user_data)
             response = register.get_response()
 
         else:
