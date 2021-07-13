@@ -23,6 +23,9 @@ def ussd_launch():
         print("This is our text")
         register  = Register(menu_items, user_data)
         response = register.get_response()
+        print("Thiiiiiiiiiisssssss is where we are")
+        print(response)
+        print(register.__dict__)
 
     elif menu_items[0] == "1":
         user = Register.is_user_registered(phone_number)
