@@ -19,25 +19,16 @@ def ussd_launch():
     }
 
     if menu_items[0] == '':
-        print(text)
-        print("This is our text")
         register  = Register(menu_items, user_data)
         response = register.get_response()
-        print("Thiiiiiiiiiisssssss is where we are")
-        print(response)
-        print(register.__dict__)
-
     elif menu_items[0] == "1":
         user = Register.is_user_registered(phone_number)
         if not user:
             register  = Register(menu_items, user_data)
             response = register.get_response()
-
         else:
             send_money = SendMoney(menu_items)
             response = send_money.get_response()
-    print(response)
-    print("We are here")
     return response
 
 def get_menu_items(text):

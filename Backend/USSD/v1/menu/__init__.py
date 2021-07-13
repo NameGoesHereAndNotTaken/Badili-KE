@@ -1,5 +1,6 @@
 import re
 from Backend.models import User
+from Backend import psql
 class Register:
     def __init__(self, menu_items, user_data):
         self.user_data = user_data
@@ -8,7 +9,6 @@ class Register:
         self.response = None
         self.determine_level()
         
-    
     def determine_level(self):
         print("Determining level")
         print(self.menu_items)
@@ -54,8 +54,19 @@ class Register:
         self.response = response
 
     def level_four(self):
-        print(self.menu_items)
-        pass
+        id_number = self.menu_items[1]
+        pin = self.menu_items[2]
+        confirm_pin = self.menu_items[3]
+        phone_number = self.user_data['phone_number']
+        if pin == confirm_pin:
+            new_user = User(id_number, phone_number, pin)
+            psql.session.add(new_user)
+            psql.session.commit()
+            response = "END Successfully created account"
+            self.response = response
+        else:
+            response = "END Error. Pins don't match. Try again"
+            self.response = response
 
     def get_response(self):
         print(self.response)
