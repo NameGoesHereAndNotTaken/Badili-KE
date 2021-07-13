@@ -27,7 +27,6 @@ def ussd_launch():
             send_money = SendMoney(menu_items)
             response = send_money.get_response()
 
-    elif
     return response
 
 def get_menu_items(text):
