@@ -56,6 +56,7 @@ class Register:
         pass
 
     def get_response(self):
+        print(self.response)
         return self.response
 
     def get_text(self):
