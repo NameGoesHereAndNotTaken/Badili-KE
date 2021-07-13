@@ -5,8 +5,9 @@ class Register:
         self.user_data = user_data
         self.menu_items = menu_items
         self.user = self.is_user_registered(self.user_data['phone_number'])
-        self.determine_level()
         self.response = None
+        self.determine_level()
+        
     
     def determine_level(self):
         print("Determining level")
