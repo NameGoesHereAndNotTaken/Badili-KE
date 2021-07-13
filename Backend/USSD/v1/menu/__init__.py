@@ -26,6 +26,8 @@ class Register:
 
     def level_one(self):
         if self.menu_items[0] == '':
+            print("USSSSSSSERRRRRRRRRR is ")
+            print(self.user)
             if self.user:
                 response = f"CON Welcome back {self.user.first_name} \n"
                 response += "1. Send Money \n"
