@@ -23,10 +23,8 @@ class Appruve:
     def _verify_id_number(self, id_number):
         data = {'id': id_number}
         headers = {'Content-Type': 'application/json', 'Authorization':'Bearer ' +self.config.get('APPRUVE_API_KEY')}
-        print(self.url)
         response = requests.post(self.url+"national_id",params=data,headers=headers)
-        print("Response is")
-        print(response.json())
+        
 
         return response.json()
 

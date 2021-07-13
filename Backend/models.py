@@ -11,9 +11,9 @@ class User(psql.Model):
     id_number = psql.Column(psql.String(50), nullable=False)
     country_code = psql.Column(psql.String(10))
     phone_number = psql.Column(psql.String(15), nullable=False)
-    pin = psql.Column(psql.String(100), nullable=False)
-    public_key = psql.Column(psql.String(50), nullable=False)
-    secret = psql.Column(psql.String(50), nullable=False)
+    pin = psql.Column(psql.String(150), nullable=False)
+    public_key = psql.Column(psql.String(100), nullable=False)
+    secret = psql.Column(psql.String(500), nullable=False)
     currencies = psql.Column(psql.String(500))
     timestamp = psql.Column(psql.DateTime)
     

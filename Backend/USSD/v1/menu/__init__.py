@@ -10,8 +10,7 @@ class Register:
         self.determine_level()
         
     def determine_level(self):
-        print("Determining level")
-        print(self.menu_items)
+        
         if len(self.menu_items) == 1:
             self.level_one()
         
@@ -26,22 +25,16 @@ class Register:
 
     def level_one(self):
         if self.menu_items[0] == '':
-            print("USSSSSSSERRRRRRRRRR is ")
-            print(self.user)
             if self.user:
                 response = f"CON Welcome back {self.user.first_name} \n"
                 response += "1. Send Money \n"
                 response += "2. Withdraw Money \n"
                 response += "3. Top up Account \n"
                 self.response = response
-                print("Empty mwisho")
-                print(self.response)
             else:
                 response = "CON Welcome to Badili. The future of mobile money\n"
                 response += "1. Register Account"
                 self.response = response
-                print(self.response)
-                print("EMpty nada")
         else:
             if not self.user:                
                 response = "CON Enter your National ID number"
@@ -71,7 +64,6 @@ class Register:
             self.response = response
 
     def get_response(self):
-        print(self.response)
         return self.response
 
     def get_text(self):
