@@ -31,7 +31,8 @@ def ussd_launch():
         else:
             send_money = SendMoney(menu_items)
             response = send_money.get_response()
-
+    print(response)
+    print("We are here")
     return response
 
 def get_menu_items(text):
