@@ -37,6 +37,7 @@ class Register:
                 response = "CON Welcome to Badili. The future of mobile money\n"
                 response += "1. Register Account"
                 self.response = response
+                print(self.response)
                 print("EMpty nada")
         else:
             if not self.user:                
