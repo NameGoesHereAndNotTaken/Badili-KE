@@ -19,6 +19,8 @@ def ussd_launch():
     }
 
     if menu_items[0] == '':
+        print(text)
+        print("This is our text")
         register  = Register(menu_items, user_data)
         response = register.get_response()
 

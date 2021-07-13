@@ -9,6 +9,8 @@ class Register:
         self.response = None
     
     def determine_level(self):
+        print("Determining level")
+        prinrt(self.menu_items)
         if len(self.menu_items) == 1:
             self.level_one()
         
