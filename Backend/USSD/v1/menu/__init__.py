@@ -83,6 +83,10 @@ class SendMoney:
             self.level_one()
         elif len(self.menu_items) == 2:
             self.level_two()
+        elif len(self.menu_items) == 3:
+            self.level_three()
+        elif len(self.menu_items) == 4:
+            self.level_four()
     
     def level_one(self):
         response = "CON 1. Badili Account\n"
@@ -98,7 +102,22 @@ class SendMoney:
         self.response = response
 
     def level_three(self):
-        pass
+        phone_number = self.menu_items[2]
+        user = Register.is_user_registered(phone_number)
+        if user:
+            response = "CON Enter amount to send"
+        else:
+            response = "END User does not exist. Make sure you have the correct account number"
+
+        self.response = response
+
+    def level_four(self):
+        amount = self.menu_items[3]
+        if float(amount) > 0 and float(amount) < 10000:
+            response = "CON Enter your pin"
+        else:
+            response = "END Amount is not valid"
+        self.response = response    
 
     def get_response(self):
         return self.response

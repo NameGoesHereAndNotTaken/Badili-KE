@@ -26,13 +26,10 @@ class Stellar:
                 ).set_timeout(1000).build()
         )
         transaction.sign(self.masterkey.secret)
-        print(self.masterkey.public_key)
-        print(self.masterkey.secret)
         
         try:
             response = server.submit_transaction(transaction)
         except Exception as e:
-            print(e)
             response = e
 
         if response["successful"] != None:
