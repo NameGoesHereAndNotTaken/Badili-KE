@@ -139,6 +139,8 @@ class FundAccount:
             f"Go to MPESA, Send amount to PAYBILL 230054 with ACCOUNT NO as {self.user_data['phone_number']}. We will send you a confirmation.",
             [self.user_data['phone_number']]
         )
+        print("Messssssssaaage is")
+        print(message_status)
         if message_status['status'] == 'success':
             response = "END We have sent you the next process to follow on your mobile number"
         else:
