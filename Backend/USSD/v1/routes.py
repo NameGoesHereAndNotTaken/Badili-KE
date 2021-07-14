@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from Backend.models import User
 from Backend import psql
-from .menu import Register, SendMoney
+from .menu import Register, SendMoney, FundAccount
 
 ussd = Blueprint("ussd",__name__)
 
@@ -29,6 +29,10 @@ def ussd_launch():
         else:
             send_money = SendMoney(menu_items)
             response = send_money.get_response()
+    elif menu_items[0] == '3':
+        fund_account = FundAccount(menu_items, user_data)
+        response = fund_account.get_response()
+        
     return response
 
 def get_menu_items(text):
