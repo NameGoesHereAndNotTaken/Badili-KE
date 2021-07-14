@@ -1,6 +1,7 @@
 import re
 from Backend.models import User
 from Backend import psql
+
 class Register:
     def __init__(self, menu_items, user_data):
         self.user_data = user_data
@@ -121,8 +122,29 @@ class SendMoney:
 
     def get_response(self):
         return self.response
+
 class FundAccount:
-    pass
+    def __init__(self, menu_items, user_data):
+        self.menu_items = menu_items
+        self.user_data = user_data
+        self.response = None
+        self.determine_level()
+
+    def determine_level(self):
+        if len(self.menu_items) == 1:
+            self.level_one()
+        
+    def level_one(self):
+        message_status = User.send_message(
+            f"Go to MPESA, Send amount to PAYBILL 230054 with ACCOUNT NO as {self.user_data['phone_number']}. We will send you a confirmation.",
+            [self.user_data['phone_number']]
+        )
+        if message_status['status'] == 'success':
+            response = "END We have sent you the next process to follow on your mobile number"
+        else:
+            response = "END Sorry something wrong occurred. Please try again later"
+
+        self.response = response
 
 class Withdraw:
     pass

@@ -2,6 +2,8 @@ import os
 
 from blockchain import Stellar
 from verification import Appruve
+from messaging import AT
+
 
 class Middleware:
     def __init__(self):
@@ -14,6 +16,7 @@ class Middleware:
             self.config = app.config
         self.stellar = Stellar(self.config)
         self.appruve = Appruve(self.config)
+        self.africastalking = AT(self.config)
         
     def get_user_info(self, id_number):
         if not id_number:
@@ -35,3 +38,6 @@ class Middleware:
 
     def create_account_on_stellar(self, pin):
         return self.stellar.create_account_on_blockchain(pin)
+
+    def send_message(self,message, recipients):
+        return self.africastalking.send_message(message, recipients)

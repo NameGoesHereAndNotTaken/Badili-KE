@@ -36,3 +36,7 @@ class User(psql.Model):
     @classmethod
     def check_user_exists(cls, phone_number):
         return User.query.filter_by(phone_number = phone_number).first()
+
+    @classmethod
+    def send_message(cls, message, phone_number):
+        return middleware.send_message(message, phone_number)
