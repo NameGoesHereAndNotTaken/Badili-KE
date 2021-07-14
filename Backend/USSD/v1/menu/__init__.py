@@ -146,6 +146,10 @@ class FundAccount:
 
         self.response = response
 
+    def get_response(self):
+        return self.response
+
+
 class Withdraw:
     pass
 
