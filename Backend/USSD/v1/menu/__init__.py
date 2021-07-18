@@ -153,7 +153,6 @@ class FundAccount:
         response = User.mock_deposit(self.user_data["phone_number"], int(amount))
 
         self.response = response
-        print(response)
 
     def get_response(self):
         return self.response
