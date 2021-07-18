@@ -24,6 +24,8 @@ class Mpesa:
         print(response)
     
     def make_mock_payment(self, amount, msisdn, bill_ref_number):
+        print("Type of amount is")
+        print(amount)
         test_data={
             "shortcode": self.short_code,
             "command_id": "CustomerPayBillOnline",
