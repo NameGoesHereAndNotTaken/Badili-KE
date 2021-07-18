@@ -10,7 +10,7 @@ class Middleware:
         self.app = None
         self.config = None
         self.stellar = None
-        self.payment = None
+        self.payment_method = None
 
     def init_app(self, app):
         with app.app_context():
@@ -18,11 +18,12 @@ class Middleware:
         self.stellar = Stellar(self.config)
         self.appruve = Appruve(self.config)
         self.africastalking = AT(self.config)
-        self.payment = Payment(self.config, self.payment)
+        self.payment = Payment(self.config, self.payment_method)
 
     def init_payment(self, mpesa):
-        self.payment = mpesa    
-        print(self.payment)
+        self.payment_method = mpesa 
+        print("Paaaayyyyment methodsssssssssss")   
+        print(self.payment_method)
 
     def get_user_info(self, id_number):
         if not id_number:
