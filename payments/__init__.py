@@ -31,4 +31,7 @@ class Mpesa:
             "msisdn": msisdn,
             "bill_ref_number": bill_ref_number
         }
-        return self.mpesa_api.C2B.simulate(**test_data)
+        response = self.mpesa_api.C2B.simulate(**test_data)
+        print("RESSSSSSPOOOOONSE is ")
+        print(response)
+        return response
