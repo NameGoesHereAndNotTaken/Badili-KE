@@ -1,5 +1,5 @@
 import re
-from Backend.models import User
+from Backend.models import User, Transaction
 from Backend import psql
 
 class Register:
@@ -150,8 +150,14 @@ class FundAccount:
 
     def level_two(self):
         amount = self.menu_items[1]
-        response = "END Response is"
-        response += User.mock_deposit(self.user_data["phone_number"], int(amount))
+        bill_ref_number = User.mock_deposit(self.user_data["phone_number"], int(amount))
+        user = User.query.filter_by(phone_number=self.user_data["phone_numbe"]).first()
+        print("USer is ")
+        print(user)
+        transaction = Transaction(bill_ref_number, user.id)
+        psql.session.add(transaction)
+        psql.session.commit()
+        response = "END We have received your payment request and will get back to you ASAP"
         self.response = response
         
     def get_response(self):

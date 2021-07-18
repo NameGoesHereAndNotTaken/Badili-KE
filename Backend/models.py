@@ -1,6 +1,6 @@
 from Backend import psql, middleware, mpesa_api
 from flask import current_app
-from datetime import datetime, timezone
+from datetime import datetime
 import pytz
 
 from werkzeug.security import generate_password_hash
@@ -44,3 +44,14 @@ class User(psql.Model):
     @classmethod
     def mock_deposit(cls, phone_number, amount):
         return middleware.mpesa_top_up_account(phone_number[1:], amount)
+
+class Transaction(psql.Model):
+    id = psql.Column(psql.Integer, primary_key=True)
+    transaction_id = psql.Column(psql.String(100), nullable=False)
+    timestamp = psql.Column(psql.DateTime)
+    user_id = psql.Column(psql.ForeignKey('user.id'), nullable=False)
+
+    def __init__(self, transaction_id, user_id):
+        self.transaction_id = transaction_id
+        self.user_id = user_id
+        self.timestamp = datetime.now(pytz.timezone(current_app.config.get('TIMEZONE')))
