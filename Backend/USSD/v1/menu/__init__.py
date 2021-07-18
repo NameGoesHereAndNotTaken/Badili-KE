@@ -133,6 +133,8 @@ class FundAccount:
     def determine_level(self):
         if len(self.menu_items) == 1:
             self.level_one()
+        if len(self.menu_items) == 2:
+            self.level_two()
         
     def level_one(self):
         message_status = User.send_message(
@@ -145,6 +147,10 @@ class FundAccount:
             response = "END Sorry something wrong occurred. Please try again later"
 
         self.response = response
+
+    def level_two(self):
+        amount = self.menu_items[1]
+        
 
     def get_response(self):
         return self.response
