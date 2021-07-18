@@ -1,13 +1,13 @@
-from Backend import mpesa_api
 class Payment:
-    def __new__(cls, config):
+    def __new__(cls, config, payment):
         cls.config = config
         country = cls.config.get('COUNTRY')
         if country == "Kenya":
-            return Mpesa(cls.config.get('MPESA_SHORT_CODE'), cls.config.get('MPESA_CONFIRMATION_URL'), cls.config.get('MPESA_VALIDATION_URL'))
+            return Mpesa(payment, cls.config.get('MPESA_SHORT_CODE'), cls.config.get('MPESA_CONFIRMATION_URL'), cls.config.get('MPESA_VALIDATION_URL'))
 
 class Mpesa:
-    def __init__(self, short_code, confirmation_url, validation_url):
+    def __init__(self, mpesa_api, short_code, confirmation_url, validation_url):
+        self.mpesa_api = mpesa_api
         self.short_code = short_code
         self.confirmation_url = confirmation_url
         self.validation_url = validation_url  
@@ -20,7 +20,7 @@ class Mpesa:
             "confirmation_url": self.confirmation_url,
             "validation_url": self.validation_url
         }
-        response = mpesa_api.C2B.register(**reg_data)  
+        response = self.mpesa_api.C2B.register(**reg_data)  
         print(response)
     
     def make_mock_payment(self, amount, msisdn, bill_ref_number):
@@ -31,4 +31,4 @@ class Mpesa:
             "msisdn": msisdn,
             "bill_ref_number": bill_ref_number
         }
-        return mpesa_api.C2B.simulate(**test_data)
+        return self.mpesa_api.C2B.simulate(**test_data)

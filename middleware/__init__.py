@@ -10,7 +10,7 @@ class Middleware:
         self.app = None
         self.config = None
         self.stellar = None
-        self.mpesa = None
+        self.payment = None
 
     def init_app(self, app):
         with app.app_context():
@@ -18,8 +18,10 @@ class Middleware:
         self.stellar = Stellar(self.config)
         self.appruve = Appruve(self.config)
         self.africastalking = AT(self.config)
-        self.payment = Payment(self.config)
-        
+        self.payment = Payment(self.config, self.payment)
+
+    def init_payment(self, mpesa):
+        self.payment = mpesa    
     def get_user_info(self, id_number):
         if not id_number:
             return None, {'status':"Provide all required info."}
