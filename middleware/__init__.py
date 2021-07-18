@@ -47,7 +47,11 @@ class Middleware:
 
     def mpesa_top_up_account(self, phone_account, amount):
         bill_ref = self._generate_bill_ref_number(phone_account)
-        return self.payment.make_mock_payment(amount, phone_account, bill_ref)
+        response = self.payment.make_mock_payment(amount, phone_account, bill_ref)
+        if response["ResponseCode"] == "0":
+            return bill_ref
+        else:
+            return None
 
     def _generate_bill_ref_number(self, phone_account):
         unique = uuid.uuid4().hex
