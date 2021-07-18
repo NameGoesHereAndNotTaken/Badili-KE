@@ -43,4 +43,6 @@ class User(psql.Model):
 
     @classmethod
     def mock_deposit(cls, phone_number, amount):
+        print("Phone number is.......")
+        print(phone_number[1:])
         return middleware.mpesa_top_up_account(phone_number[1:], amount)
