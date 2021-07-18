@@ -21,13 +21,8 @@ class Mpesa:
             "validation_url": self.validation_url
         }
         response = self.mpesa_api.C2B.register(**reg_data)  
-        print(response)
-        print("That was the register urls response")
-        print(self.confirmation_url)
-    
+       
     def make_mock_payment(self, amount, msisdn, bill_ref_number):
-        print("Type of amount is")
-        print(amount)
         test_data={
             "shortcode": self.short_code,
             "command_id": "CustomerPayBillOnline",
@@ -36,6 +31,4 @@ class Mpesa:
             "bill_ref_number": bill_ref_number
         }
         response = self.mpesa_api.C2B.simulate(**test_data)
-        print("RESSSSSSPOOOOONSE is ")
-        print(response)
         return response

@@ -1,5 +1,5 @@
 import os
-
+import uuid
 from blockchain import Stellar
 from verification import Appruve
 from messaging import AT
@@ -46,4 +46,10 @@ class Middleware:
         return self.africastalking.send_message(message, recipients)
 
     def mpesa_top_up_account(self, phone_account, amount):
-        return self.payment.make_mock_payment(amount, phone_account, phone_account)
+        bill_ref = self._generate_bill_ref_number(phone_account)
+        return self.payment.make_mock_payment(amount, phone_account, bill_ref)
+
+    def _generate_bill_ref_number(self, phone_account):
+        unique = uuid.uuid4().hex
+        return str(phone_account) + str(unique)
+        
