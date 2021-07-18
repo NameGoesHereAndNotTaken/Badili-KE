@@ -151,7 +151,7 @@ class FundAccount:
     def level_two(self):
         amount = self.menu_items[1]
         bill_ref_number = User.mock_deposit(self.user_data["phone_number"], int(amount))
-        user = User.query.filter_by(phone_number=self.user_data["phone_numbe"]).first()
+        user = User.query.filter_by(phone_number=self.user_data["phone_number"]).first()
         print("USer is ")
         print(user)
         transaction = Transaction(bill_ref_number, user.id)
