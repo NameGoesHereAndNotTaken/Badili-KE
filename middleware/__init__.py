@@ -22,6 +22,8 @@ class Middleware:
 
     def init_payment(self, mpesa):
         self.payment = mpesa    
+        print(self.payment)
+
     def get_user_info(self, id_number):
         if not id_number:
             return None, {'status':"Provide all required info."}
