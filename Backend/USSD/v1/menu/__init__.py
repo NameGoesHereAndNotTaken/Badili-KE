@@ -150,7 +150,7 @@ class FundAccount:
 
     def level_two(self):
         amount = self.menu_items[1]
-        response = User.mock_deposit(self.user["phone_number"], amount)
+        response = User.mock_deposit(self.user_data["phone_number"], amount)
 
         self.response = response
 
