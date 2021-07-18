@@ -18,7 +18,6 @@ def create_app(load_config):
     migrate.init_app(app, psql)
     middleware.init_app(app)
     mpesa_api.init_app(app)
-    middleware.init_payment(mpesa_api)
 
     from Backend.USSD.v1.routes import ussd
     
