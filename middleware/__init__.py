@@ -3,13 +3,14 @@ import os
 from blockchain import Stellar
 from verification import Appruve
 from messaging import AT
-
+from payments import Payment
 
 class Middleware:
     def __init__(self):
         self.app = None
         self.config = None
         self.stellar = None
+        self.mpesa = None
 
     def init_app(self, app):
         with app.app_context():
@@ -17,6 +18,7 @@ class Middleware:
         self.stellar = Stellar(self.config)
         self.appruve = Appruve(self.config)
         self.africastalking = AT(self.config)
+        self.payment = Payment(self.config)
         
     def get_user_info(self, id_number):
         if not id_number:
@@ -41,3 +43,6 @@ class Middleware:
 
     def send_message(self,message, recipients):
         return self.africastalking.send_message(message, recipients)
+
+    def mpesa_top_up_account(self, phone_account, amount):
+        return self.payment.make_mock_payment(phone_account, amount, phone_account)

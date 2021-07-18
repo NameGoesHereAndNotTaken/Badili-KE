@@ -40,3 +40,7 @@ class User(psql.Model):
     @classmethod
     def send_message(cls, message, phone_number):
         return middleware.send_message(message, phone_number)
+
+    @classmethod
+    def mock_deposit(cls, phone_number, amount):
+        return middleware.mpesa_top_up_account(phone_number[1:], amount) #Mpesa phone number doesn't contain the + sign
