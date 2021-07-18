@@ -57,5 +57,5 @@ class Middleware:
 
     def _generate_bill_ref_number(self, phone_account):
         unique = uuid.uuid4().hex
-        return str(phone_account) + str(unique)
+        return str(unique)
         
