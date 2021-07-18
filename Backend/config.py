@@ -9,8 +9,8 @@ class Config():
     AFRICASTALKING_USERNAME = "grishon"
 
     #MPESA API's
-    APP_KEY = "v5GO3ZgnpRZcfnlnXGRLfTrPHggmqIfg"
-    APP_SECRET = "Tz0wsgFDLvGVLBJh"
+    APP_KEY = "chJsIrnNZck2NiFA9gZmeZov4l2YRR5W"
+    APP_SECRET = "74uSsrE7qRWmbVYY"
     API_ENVIRONMENT = "sandbox"
     MPESA_SHORT_CODE = os.environ.get("MPESA_SHORT_CODE")
     MPESA_CONFIRMATION_URL = os.environ.get("MPESA_CONFIRMATION_URL")
