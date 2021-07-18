@@ -38,6 +38,7 @@ def ussd_launch():
 @ussd.route('/payments/ke/mobile-money/confirmation', methods=['POST'])
 def mpesa_confirmation():
     data = request.data
+    print("We are in this part we want!!!!!!!!")
     print(data)
 
 
