@@ -46,4 +46,6 @@ class Middleware:
         return self.africastalking.send_message(message, recipients)
 
     def mpesa_top_up_account(self, phone_account, amount):
+        print("AMOUNT iiiiiiisssssss ")
+        print(amount)
         return self.payment.make_mock_payment(phone_account, amount, phone_account)
