@@ -27,6 +27,8 @@ class Middleware:
         
         valid_verification_types = self.appruve.get_valid_verification_types()
         user = self.appruve.verify_national_id(id_number, "national_id")
+        print("verify_national_id issssssssssss")
+        print(user)
         if user:
             user = {
                 "first_name": user['first_name'],

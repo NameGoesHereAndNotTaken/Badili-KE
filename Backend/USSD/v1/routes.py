@@ -1,6 +1,6 @@
 from flask import Blueprint, request
-from Backend.models import User
-from Backend import psql
+from Backend.models import User, Transaction
+from Backend import psql, middleware
 from .menu import Register, SendMoney, FundAccount
 
 ussd = Blueprint("ussd",__name__)
@@ -38,9 +38,10 @@ def ussd_launch():
 @ussd.route('/payments/ke/mobile-money/confirmation', methods=['POST'])
 def mpesa_confirmation():
     data = request.data
-    print("We are in this part we want!!!!!!!!")
-    print(data)
-
+    bill_ref_number = data["BillRefNumber"]
+    transaction = Transaction.query.filter_by(transaction_id=bill_ref_number).first()
+    user = User.query.get(transaction.user_id).first()
+    # middleware.
 
 def get_menu_items(text):
     return text.split('*')

@@ -55,7 +55,7 @@ class Register:
         confirm_pin = self.menu_items[3]
         phone_number = self.user_data['phone_number']
         if pin == confirm_pin:
-            new_user = User(id_number, phone_number, pin)
+            new_user = User(id_number, phone_number = phone_number, pin = pin)
             psql.session.add(new_user)
             psql.session.commit()
             response = "END Successfully created account"

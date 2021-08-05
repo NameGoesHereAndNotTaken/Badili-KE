@@ -52,3 +52,15 @@ class Stellar:
 
         return f.encrypt(str.encode(secret))
         
+    # def credit_account(self, public_key, amount, currency):
+    #     server = Server(horizon_url=self.config.get('HORIZON_NETWORK'))
+    #     transaction = (
+    #         TransactionBuilder(source_account=server.load_account(self.masterkey.public_key),
+    #         network_passphrase=Network.TESTNET_NETWORK_PASSPHRASE,
+    #         base_fee=server.fetch_base_fee()
+    #         ).append_payment_op(
+    #             destination=public_key, 
+    #             amount=amount,
+    #             asset_code=
+    #         )
+    #     )

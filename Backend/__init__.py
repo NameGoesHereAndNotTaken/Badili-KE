@@ -20,7 +20,9 @@ def create_app(load_config):
     middleware.init_app(app, mpesa_api)
 
     from Backend.USSD.v1.routes import ussd
+    from Backend.Api.v1.routes import api
     
     app.register_blueprint(ussd)
+    app.register_blueprint(api)
 
     return app
