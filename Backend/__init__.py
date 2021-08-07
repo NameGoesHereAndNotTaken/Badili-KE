@@ -13,7 +13,7 @@ mpesa_api = MpesaAPI()
 
 def create_app(load_config):
     app = Flask(__name__)
-    cors = CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
+    cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
     app.config.from_object(config[load_config])
 
     psql.init_app(app)
