@@ -82,7 +82,7 @@ def api_signup():
     if new_user:
         if new_user.verify_password(password):
             token = new_user.encode_auth_token(new_user.id)
-            response = {'status': 'success', 'message':'User signin successful', 'auth_token': token, 'user': {"email": email, "names": new_user.first_name +" "+ new_user.last_name} }
+            response = {'status': 'success', 'message':'User signin successful', 'user': {"email": email, "names": new_user.first_name +" "+ new_user.last_name, 'stellar_address':new_user.public_key, 'auth_token': token} }
             return make_response(jsonify(response)), 200
         else:
             response = {'status': 'fail', 'message':'Email or password mismatch'}
