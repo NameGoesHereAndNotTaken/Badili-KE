@@ -4,6 +4,7 @@ from flask_migrate import Migrate
 from Backend.config import config
 from middleware import Middleware
 from flask_mpesa import MpesaAPI
+from flask_cors import CORS
 
 psql = SQLAlchemy()
 migrate = Migrate()
@@ -12,6 +13,7 @@ mpesa_api = MpesaAPI()
 
 def create_app(load_config):
     app = Flask(__name__)
+    cors = CORS(app, resources={r"/api/*": {"origins": "http://localhost:3000"}})
     app.config.from_object(config[load_config])
 
     psql.init_app(app)
